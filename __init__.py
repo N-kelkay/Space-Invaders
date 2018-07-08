@@ -28,3 +28,6 @@ player.penup()
 player.speed(0)
 player.setposition(0,-250)
 player.setheading(90)
+
+delay = input("Press enter to finish.")
+turtle.mainloop()
