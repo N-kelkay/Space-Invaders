@@ -29,6 +29,16 @@ player.speed(0)
 player.setposition(0,-250)
 player.setheading(90)
 
+#Enemy player
+enemy = turtle.Turtle()
+enemy.color('red')
+enemy.shape('circle')
+enemy.penup()
+enemy.speed(0)
+enemy.setposition(-200, 250)
+
+enemySpeed = 2
+
 # To move player left and right
 playerspeed = 15
 
@@ -37,21 +47,44 @@ def move_left():
     x = player.xcor()
     x -= playerspeed
     if(x <= -285):
-        player.setx(285)
-    player.setx(x)
+        player.setx(-285)
+    else:
+        player.setx(x)
 
 #Move player Right
 def move_right():
     x = player.xcor()
     x += playerspeed
     if(x >= 285):
-        player.setx(-285)
-    player.setx(x)
+        player.setx(285)
+    else:
+        player.setx(x)
 
 # activates the left and right functions
 turtle.listen()
 turtle.onkey(move_left, "Left")
 turtle.onkey(move_right, "Right")
+
+# Main game mainloop
+while True:
+    #Move the enemy
+    x = enemy.xcor()
+    x += enemySpeed
+    if(x >= 285):
+        enemy.setx(-285)
+    elif(x <= -285):
+        enemy.setx(285)
+    else:
+        enemy.setx(x)
+
+    y = enemy.ycor()
+    y -+ enemySpeed
+    if (y >= 285):
+        enemy.sety(-285)
+    elif(y <= -285):
+        enemy.hide()
+    else:
+        enemy.sety(x)
 
 #Creates a delay so that the turtle window does not disappear
 delay = input("Press enter to finish.")
