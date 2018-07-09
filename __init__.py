@@ -36,20 +36,17 @@ playerspeed = 15
 def move_left():
     x = player.xcor()
     x -= playerspeed
-    player.setx(x)
-
     if(x <= -285):
         player.setx(285)
+    player.setx(x)
 
 #Move player Right
 def move_right():
     x = player.xcor()
     x += playerspeed
-    player.setx(x)
-
-    print(x)
     if(x >= 285):
         player.setx(-285)
+    player.setx(x)
 
 # activates the left and right functions
 turtle.listen()
