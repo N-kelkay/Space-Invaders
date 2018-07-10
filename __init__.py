@@ -28,6 +28,8 @@ player.penup()
 player.speed(0)
 player.setposition(0,-250)
 player.setheading(90)
+# To move player left and right
+playerspeed = 15
 
 #Enemy player
 enemy = turtle.Turtle()
@@ -36,22 +38,24 @@ enemy.shape('circle')
 enemy.penup()
 enemy.speed(0)
 enemy.setposition(-200, 250)
+enemySpeed = 2
+
 
 #Player bullet
 bullet = turtle.Turtle()
-bullet.color('green')
-bullet.shape('classic')
+bullet.color('yellow')
+bullet.shape('triangle')
 bullet.penup()
 bullet.speed(0)
-playerx = player.xcor()
-playery = player.ycor()
-bullet.setposition((playerx), (playery + 10))
 bullet.setheading(90)
+bullet.shapesize(0.5, 0.5)
+bullet.hideturtle()
+bulletspeed = 20
+#Bullet State:
+#ready - ready to fire
+bulletstate = ready
+#fire - bullet is firing
 
-enemySpeed = 2
-
-# To move player left and right
-playerspeed = 15
 
 #Move player Left
 def move_left():
@@ -70,6 +74,18 @@ def move_right():
         player.setx(285)
     else:
         player.setx(x)
+
+def fire_bullet():
+    # Declare bulletstate as a global if it needs to be changed
+    # Global variables can be accesed anywhere in the skript
+    # It should be global because, it will allow us to make direct changed that reflet the varable (wherever it is)
+    global bulletstate
+
+    # Move the bullet above the player
+    x = player.xcor()
+    y = player.ycor()
+    bullet.setposition(x, y+10)
+    bullet.showturtle()
 
 # activates the left and right functions
 turtle.listen()
