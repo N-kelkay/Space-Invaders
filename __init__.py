@@ -37,6 +37,17 @@ enemy.penup()
 enemy.speed(0)
 enemy.setposition(-200, 250)
 
+#Player bullet
+bullet = turtle.Turtle()
+bullet.color('green')
+bullet.shape('classic')
+bullet.penup()
+bullet.speed(0)
+playerx = player.xcor()
+playery = player.ycor()
+bullet.setposition((playerx), (playery + 10))
+bullet.setheading(90)
+
 enemySpeed = 2
 
 # To move player left and right
