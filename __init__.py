@@ -85,25 +85,6 @@ while True:
         enemySpeed *= -1
         enemy.sety(y)
 
-
-    # x = enemy.xcor()
-    # x += enemySpeed
-    # # if(x >= 285):
-    #    enemy.setx(-285)
-    # elif(x <= -285):
-    #     enemy.setx(285)
-    # else:
-    #     enemy.setx(x)
-    #
-    # y = enemy.ycor()
-    # y -+ enemySpeed
-    # if (y >= 285):
-    #     enemy.sety(-285)
-    # elif(y <= -285):
-    #     enemy.hide()
-    # else:
-    #     enemy.sety(x)
-
 #Creates a delay so that the turtle window does not disappear
 delay = input("Press enter to finish.")
 # turtle.mainloop()
