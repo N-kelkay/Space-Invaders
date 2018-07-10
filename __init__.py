@@ -70,21 +70,31 @@ while True:
     #Move the enemy
     x = enemy.xcor()
     x += enemySpeed
-    if(x >= 285):
-        enemy.setx(-285)
-    elif(x <= -285):
-        enemy.setx(285)
-    else:
-        enemy.setx(x)
+    enemy.setx(x)
 
-    y = enemy.ycor()
-    y -+ enemySpeed
-    if (y >= 285):
-        enemy.sety(-285)
-    elif(y <= -285):
-        enemy.hide()
-    else:
-        enemy.sety(x)
+    if(enemy.xcor() > 280):
+        enemySpeed *= -1
+    elif(enemy.xcor() < 280):
+        enemySpeed *= -1
+
+
+    # x = enemy.xcor()
+    # x += enemySpeed
+    # # if(x >= 285):
+    #    enemy.setx(-285)
+    # elif(x <= -285):
+    #     enemy.setx(285)
+    # else:
+    #     enemy.setx(x)
+    #
+    # y = enemy.ycor()
+    # y -+ enemySpeed
+    # if (y >= 285):
+    #     enemy.sety(-285)
+    # elif(y <= -285):
+    #     enemy.hide()
+    # else:
+    #     enemy.sety(x)
 
 #Creates a delay so that the turtle window does not disappear
 delay = input("Press enter to finish.")
