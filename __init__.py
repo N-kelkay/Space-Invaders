@@ -53,7 +53,7 @@ bullet.hideturtle()
 bulletspeed = 20
 #Bullet State:
 #ready - ready to fire
-bulletstate = ready
+bulletstate = "ready"
 #fire - bullet is firing
 
 
@@ -81,23 +81,25 @@ def fire_bullet():
     # It should be global because, it will allow us to make direct changed that reflet the varable (wherever it is)
     global bulletstate
 
-    # Move the bullet above the player
-    x = player.xcor()
-    y = player.ycor()
-    bullet.setposition(x, y+10)
-    bullet.showturtle()
+    if(bulletstate == "ready"):
+        bulletstate = "fire"
+        # Move the bullet above the player
+        x = player.xcor()
+        y = player.ycor()
+        bullet.setposition(x, y+10)
+        bullet.showturtle()
 
 # activates the left and right functions
 turtle.listen()
 turtle.onkey(move_left, "Left")
 turtle.onkey(move_right, "Right")
-
+turtle.onkey(fire_bullet, "space")
 # Main game mainloop
 while True:
     #Move the enemy
-    x = enemy.xcor()
-    x += enemySpeed
-    enemy.setx(x)
+    enemyx = enemy.xcor()
+    enemyx += enemySpeed
+    enemy.setx(enemyx)
 
     #Keeps the enemy in the border and moves it doen when it tuches a border
     if (enemy.xcor() > 285):
@@ -111,6 +113,16 @@ while True:
         y -= 40
         enemySpeed *= -1
         enemy.sety(y)
+
+    # Move the bullet
+    bullety = bullet.ycor()
+    bullety += bulletspeed
+    bullet.sety(bullety)
+
+    # Check to see if the bullet has gone out of bound
+    if(bullet.ycor() > 275):
+        bullet.hideturtle()
+        bulletstate = "ready"
 
 #Creates a delay so that the turtle window does not disappear
 delay = input("Press enter to finish.")
