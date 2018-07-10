@@ -72,10 +72,18 @@ while True:
     x += enemySpeed
     enemy.setx(x)
 
-    if(enemy.xcor() > 280):
+    #Keeps the enemy in the border and moves it doen when it tuches a border
+    if (enemy.xcor() > 285):
+        y = enemy.ycor()
+        y -= 40
         enemySpeed *= -1
-    elif(enemy.xcor() < 280):
+        enemy.sety(y)
+
+    if (enemy.xcor() < -285):
+        y = enemy.ycor()
+        y -= 40
         enemySpeed *= -1
+        enemy.sety(y)
 
 
     # x = enemy.xcor()
