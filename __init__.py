@@ -92,7 +92,7 @@ def fire_bullet():
 #Check if the bullet and the enemy have touched
 def isCollition(t1, t2):
     distance = math.sqrt(math.pow((t2.xcor() - t1.xcor()),2) + math.pow((t2.ycor() - t1.ycor()), 2))
-    if(distance < 15):
+    if(distance < 25):
         return True
     else:
         return False
@@ -143,6 +143,14 @@ while True:
 
             #reset the enemy
             enemy.setposition(-200, 250)
+
+    #Check collition between the player and the enemy
+    if isCollition(player, enemy):
+        player.hideturtle()
+        enemy.hideturtle()
+        bullet.hideturtle()
+        print("GAME OVER!")
+        break
 
 #Creates a delay so that the turtle window does not disappear
 delay = input("Press enter to finish.")
