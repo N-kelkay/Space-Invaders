@@ -91,7 +91,7 @@ def fire_bullet():
 
 #Check if the bullet and the enemy have touched
 def isCollition(t1, t2):
-    distance = math.sqrt(((t2.getx() - t1.getx())**2) + ((t2.gety() - t1.gety())**2))
+    distance = math.sqrt(((t2.xcor() - t1.xcor())**2) + ((t2.ycor() - t1.ycor())**2))
     if(distance < 2):
         return True
     else:
@@ -132,6 +132,13 @@ while True:
     if(bullet.ycor() > 275):
         bullet.hideturtle()
         bulletstate = "ready"
+
+    if (isCollition(enemy, bullet) == True):
+        print("HIT!!")
+    elif (isCollition(enemy, bullet) == False):
+        print("MISSED!!")
+    else:
+        print("did not scan")
 
 #Creates a delay so that the turtle window does not disappear
 delay = input("Press enter to finish.")
