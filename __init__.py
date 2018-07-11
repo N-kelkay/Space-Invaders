@@ -52,7 +52,7 @@ player.setheading(90)
 playerspeed = 15
 
 #Choose the number of enemies
-number_of_enemis = 5
+number_of_enemis = 7
 #Create an empty list of enemies
 enemies = []
 #Add enemies to the list
@@ -70,7 +70,7 @@ for enemy in enemies:
     x = random.randint(-200, 200)
     y = random.randint(100, 250)
     enemy.setposition(x, y)
-enemySpeed = 2
+enemySpeed = 7
 
 #Player bullet
 bullet = turtle.Turtle()
@@ -81,7 +81,7 @@ bullet.speed(0)
 bullet.setheading(90)
 bullet.shapesize(0.5, 0.5)
 bullet.hideturtle()
-bulletspeed = 20
+bulletspeed = 27
 #Bullet State:
 #ready - ready to fire
 #fire - bullet is firing
@@ -112,7 +112,7 @@ def fire_bullet():
     global bulletstate
 
     if(bulletstate == "ready"):
-        os.system("afplay laser.wav&")
+        os.system("afplay laser.wav&") #The '&' allows the sound to play while the game runs
         bulletstate = "fire"
         # Move the bullet above the player
         x = player.xcor()
@@ -159,6 +159,7 @@ while True:
         #Check collition between the bullet and the enemy
         if(bulletstate == "fire"):
             if isCollition(enemy, bullet):
+                os.system("afplay explosion.wav&")
                 #reset the bullet
                 bullet.hideturtle()
                 bulletstate = "ready"
@@ -177,6 +178,7 @@ while True:
 
         #Check collition between the player and the enemy
         if isCollition(player, enemy):
+            os.system("afplay explosion.wav&")
             player.hideturtle()
             enemy.hideturtle()
             bullet.hideturtle()
