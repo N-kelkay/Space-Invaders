@@ -7,7 +7,6 @@ import math
 wn = turtle.Screen()
 wn.bgcolor("black")
 wn.title("Space Invaders")
-
 # Draw border
 border_pen = turtle.Turtle()
 border_pen.speed(0)
@@ -32,15 +31,24 @@ player.setheading(90)
 # To move player left and right
 playerspeed = 15
 
-#Enemy player
-enemy = turtle.Turtle()
-enemy.color('red')
-enemy.shape('circle')
-enemy.penup()
-enemy.speed(0)
-enemy.setposition(-200, 250)
-enemySpeed = 2
+#Choose the number of enemies
+number_of_enemis = 5
+#Create an empty list of enemies
+enemies = []
+#Add enemies to the list
+for i in range(number_of_enemis):
+    #Create enemy players
+    enemies.append(turtle.Turtle())
 
+#Give Each enemy a feature
+
+for enemy in enemies:
+    enemy.color('red')
+    enemy.shape('circle')
+    enemy.penup()
+    enemy.speed(0)
+    enemy.setposition(-200, 250)
+enemySpeed = 2
 
 #Player bullet
 bullet = turtle.Turtle()
