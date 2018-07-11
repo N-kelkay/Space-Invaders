@@ -122,18 +122,19 @@ while True:
         enemyx += enemySpeed
         enemy.setx(enemyx)
 
-        #Keeps the enemy in the border and moves it doen when it tuches a border
+        #Keeps the enemies in the border and moves them down when one of them touches a border
         if (enemy.xcor() > 285):
-            y = enemy.ycor()
-            y -= 40
+            for e in enemies:
+                y = e.ycor()
+                y -= 40
+                e.sety(y)
             enemySpeed *= -1
-            enemy.sety(y)
-
         if (enemy.xcor() < -285):
-            y = enemy.ycor()
-            y -= 40
+            for e in enemies:
+                y = e.ycor()
+                y -= 40
+                e.sety(y)
             enemySpeed *= -1
-            enemy.sety(y)
 
         #Check collition between the bullet and the enemy
         if(bulletstate == "fire"):
@@ -144,7 +145,9 @@ while True:
                 bullet.setposition(0, -400)
 
                 #reset the enemy
-                enemy.setposition(-200, 250)
+                x = random.randint(-200, 200)
+                y = random.randint(100, 250)
+                enemy.setposition(x, y)
 
         #Check collition between the player and the enemy
         if isCollition(player, enemy):
