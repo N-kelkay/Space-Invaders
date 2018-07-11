@@ -1,6 +1,7 @@
 # Set up the screen
 import turtle
 import os
+import math
 
 # Set up the screen
 wn = turtle.Screen()
@@ -53,9 +54,8 @@ bullet.hideturtle()
 bulletspeed = 20
 #Bullet State:
 #ready - ready to fire
-bulletstate = "ready"
 #fire - bullet is firing
-
+bulletstate = "ready"
 
 #Move player Left
 def move_left():
@@ -89,6 +89,14 @@ def fire_bullet():
         bullet.setposition(x, y+10)
         bullet.showturtle()
 
+#Check if the bullet and the enemy have touched
+def isCollition(t1, t2):
+    distance = math.sqrt(((t2.getx() - t1.getx())**2) + ((t2.gety() - t1.gety())**2))
+    if(distance < 2):
+        return True
+    else:
+        return False
+
 # activates the left and right functions
 turtle.listen()
 turtle.onkey(move_left, "Left")
@@ -114,10 +122,11 @@ while True:
         enemySpeed *= -1
         enemy.sety(y)
 
-    # Move the bullet
-    bullety = bullet.ycor()
-    bullety += bulletspeed
-    bullet.sety(bullety)
+    if(bulletstate == "fire"):
+        # Move the bullet
+        bullety = bullet.ycor()
+        bullety += bulletspeed
+        bullet.sety(bullety)
 
     # Check to see if the bullet has gone out of bound
     if(bullet.ycor() > 275):
