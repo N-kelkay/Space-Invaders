@@ -10,6 +10,10 @@ wn.bgcolor("black")
 wn.title("Space Invaders")
 wn.bgpic("space_invaders_background.gif")
 
+# Register the shapes
+turtle.register_shape("invader.gif")
+turtle.register_shape("player.gif")
+
 # Draw border
 border_pen = turtle.Turtle()
 border_pen.speed(0)
@@ -39,7 +43,7 @@ score_pen.hideturtle()
 # Create the player turtle
 player = turtle.Turtle()
 player.color("blue")
-player.shape("triangle")
+player.shape("player.gif")
 player.penup()
 player.speed(0)
 player.setposition(0,-250)
@@ -60,7 +64,7 @@ for i in range(number_of_enemis):
 
 for enemy in enemies:
     enemy.color('red')
-    enemy.shape('circle')
+    enemy.shape('invader.gif')
     enemy.penup()
     enemy.speed(0)
     x = random.randint(-200, 200)
@@ -108,6 +112,7 @@ def fire_bullet():
     global bulletstate
 
     if(bulletstate == "ready"):
+        os.system("afplay laser.wav&")
         bulletstate = "fire"
         # Move the bullet above the player
         x = player.xcor()
