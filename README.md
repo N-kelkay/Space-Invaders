@@ -2,10 +2,6 @@
 
 Game made using Python
 
+TEst1
 
-TEST TEST
-sadf
-
-sadfsa
-
-fasdfasf
+Test2
