@@ -2,6 +2,6 @@
 
 Game made using Python
 
-TEst1
 
-Test2
+no-tty
+use-agent
