@@ -1,3 +1,5 @@
+#Author: Nate
+
 # Set up the screen
 import turtle
 import os
@@ -14,7 +16,7 @@ wn.bgpic("space_invaders_background.gif")
 turtle.register_shape("invader.gif")
 turtle.register_shape("player.gif")
 
-# Draw border
+# Drmr
 border_pen = turtle.Turtle()
 border_pen.speed(0)
 border_pen.color("white")
